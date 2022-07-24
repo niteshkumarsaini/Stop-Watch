@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch Project</title>
+    <style>
+        body {
+            background: linear-gradient(blue, white, pink, green)no-repeat;
+            background-size: 1600px 1000px;
+
+        }
+    
+
+        h1 {
+            color: white;
+            background: linear-gradient(rgb(115, 128, 0), red, orange);
+            box-shadow: 8px -8px 15px 6px rgb(231, 231, 231);
+            text-shadow: 10px 10px 4px 3px blue;
+            display: block;
+            width: 500px;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 3em;
+            padding: 2px 2px;
+            margin: 40px auto;
+
+        }
+
+        .btn:hover {
+            background-color: green;
+
+        }
+
+        .btn {
+            background-color: red;
+            font-size: 15px;
+
+            color: white;
+            border-radius: 8px;
+            padding: 4px 19px;
+            margin-left: 320px;
+        }
+
+        .conta {
+            font-size: 4rem;
+            width: 235px;
+            display: block;
+            margin: 80px auto;
+
+
+        }
+        @media only screen and (max-width:1464px) {
+
+h1{
+    width: 400px;
+    font-size: 2.5em;
+    margin-left: 40px;
+}
+  .btn{
+      margin-top: 50px;
+      margin-left: 70px;
+  }      
+
+
+        
+    }
+    @media only screen and (max-width:507px) {
+        h1{
+    width: 300px;
+    font-size: 2.3em;
+    margin-left: 25px;
+}
+  .btn{
+    display: flex;
+    margin-left:135px ;
+  }      
+
+
+        
+    }
+    
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to Stopwatch</h1>
+        <div class="conta">
+            <span id="s3">0</span><span id="mint">0</span><span>:</span><span id="s2">0</span><span id="sec">0</span><span>:</span><span id="ms">00</span>
+
+        </div>
+        <div id="con2">
+            <button id="btn-1" onclick="sid=setInterval(f,(1000/100));" class="btn">Start</button>
+            <button id="btn-2" class="btn" onclick="s1()">Stop</button>
+            <button id="btn-3" class="btn" onclick="clr()">Clear</button>
+        </div>
+    </div>
+  
+    <script>
+        var ms = 0;
+        var sec = 0;
+        var mint = 0;
+        let b1 = document.getElementById("btn-1");
+        let b2 = document.getElementById("btn-2");
+        let b3 = document.getElementById("btn-3");
+        let ms1 = document.getElementById("ms");
+        let sec1 = document.getElementById("sec");
+        let mint1 = document.getElementById("mint");
+        function f() {
+            ms++;
+            if (ms >= 0 && ms < 100) {
+                ms1.innerHTML = "" + ms;
+            }
+            else if (ms <= 100) {
+                ms = 0;
+                sec++;
+                if (sec >= 1 && sec <= 59) {
+                    sec1.innerHTML = "" + sec;
+                    if(sec>9){
+                        s2.innerHTML="";
+
+
+                        
+                    }
+                    else if(sec>=1 && sec<=9 ){
+
+                        s2.innerHTML="0";
+
+
+
+}
+                }
+                else if (sec <= 60) {
+                 
+                    sec = 0;
+                    sec1.innerHTML=""+sec;
+
+                    mint++;
+                    if (mint >= 1 && mint <= 59) {
+                        mint1.innerHTML = "" + mint;
+                        if(mint>9){
+                            s3.innerHTML="";
+
+
+                        
+                    }
+                    else if(mint>=1 && mint<=9 ){
+
+                        s3.innerHTML="0";
+
+
+                        
+                    }
+                    }
+                    else if (mint <= 60) {
+                        s1();
+
+                    }
+                }
+
+            }
+
+        }
+function s1(){
+clearInterval(sid);
+
+
+}    
+function clr(){
+    s1()
+
+    ms=0;
+    sec=0;
+    mint=0;
+    ms1.innerHTML="00";
+    sec1.innerHTML="0";
+    mint1.innerHTML="0";
+    s2.innerHTML="0";
+    s3.innerHTML="0";
+    
+
+    
+}
+    </script>
+    
+</body>
+
+</html>
